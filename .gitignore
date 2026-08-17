@@ -1,0 +1,10 @@
+node_modules/
+tmp/
+bots/
+data/
+.env
+
+.vercel
+
+# Local Netlify folder
+.netlify

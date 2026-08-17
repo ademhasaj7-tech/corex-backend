@@ -1,0 +1,17 @@
+{
+  "services": {
+    "web": {
+      "root": ".",
+      "entrypoint": "."
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": {
+        "type": "service",
+        "service": "web"
+      }
+    }
+  ]
+}
