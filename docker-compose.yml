@@ -1,0 +1,22 @@
+services:
+  corex-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: corex-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - corex-data:/app/data
+      - corex-bots:/app/bots
+      - corex-tmp:/app/tmp
+
+volumes:
+  corex-data:
+  corex-bots:
+  corex-tmp:
