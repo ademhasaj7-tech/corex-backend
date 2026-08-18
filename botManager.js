@@ -107,7 +107,8 @@ function installDeps(id, botDir, runtimeType) {
       }
 
       const target = path.join(botDir, '.corex_site_packages');
-      const proc = spawn('pip3', ['install', '-r', 'requirements.txt', '--target', target, '--prefer-binary', '--no-input'], { cwd: botDir });
+      fs.mkdirSync(target, { recursive: true });
+      const proc = spawn('python3', ['-m', 'pip', 'install', '--break-system-packages', '-r', 'requirements.txt', '--target', target, '--prefer-binary', '--no-input'], { cwd: botDir });
       proc.stdout.on('data', (d) => emitLog(id, d.toString()));
       proc.stderr.on('data', (d) => emitLog(id, d.toString()));
       proc.on('close', () => {
